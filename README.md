@@ -1,4 +1,4 @@
-# Munchie -- A Recipe Generator
+# SAVR -- A Recipe Generator
 
 
 
