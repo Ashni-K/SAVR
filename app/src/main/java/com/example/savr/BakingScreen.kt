@@ -87,11 +87,6 @@ fun BakingScreen(
                     imageModifier =
                         imageModifier.border(BorderStroke(4.dp, MaterialTheme.colorScheme.primary))
                 }
-                Image(
-                    painter = painterResource(image),
-                    contentDescription = stringResource(imageDescriptions[index]),
-                    modifier = imageModifier
-                )
             }
         }
 

@@ -19,8 +19,10 @@ class BakingViewModel : ViewModel() {
 
     private val generativeModel = GenerativeModel(
         modelName = "gemini-1.5-flash",
-        apiKey = BuildConfig.apiKey
+         "AIzaSyBqVtZ3fxiOWMkHY1YKtN135cH_ugVpTno"
+
     )
+
 
     fun sendPrompt(
         bitmap: Bitmap,
