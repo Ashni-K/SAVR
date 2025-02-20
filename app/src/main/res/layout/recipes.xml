@@ -15,13 +15,13 @@
         <ListView
             android:layout_width="338dp"
             android:layout_height="498dp"
-            android:background="#D3A087"
+            android:background="#d3a087"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.45" />
+            app:layout_constraintVertical_bias="0.613" />
 
         <Button
             android:id="@+id/button2"
@@ -73,10 +73,23 @@
             app:layout_constraintVertical_bias="0.98" />
 
         <SearchView
+            android:id="@+id/searchView3"
             android:layout_width="266dp"
             android:layout_height="50dp"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="30dp" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="48dp"
+            android:layout_height="43dp"
+            android:src="@drawable/heart_coraz_n_svg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.543"
+            app:layout_constraintStart_toEndOf="@+id/searchView3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.053" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

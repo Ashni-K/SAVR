@@ -16,7 +16,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.homescreen)
-        setContentView(R.layout.homescreen);
 
         val pantryButton = findViewById<Button>(R.id.button6) // "Pantry" button
         pantryButton.setOnClickListener {
@@ -34,3 +33,4 @@ class MainActivity : ComponentActivity() {
             //}
         }
     }
+}

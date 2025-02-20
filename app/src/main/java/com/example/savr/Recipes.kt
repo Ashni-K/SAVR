@@ -1,4 +1,11 @@
-package com.example.savr;
+package com.example.savr
 
-public class Recipes {
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+
+class Recipes : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.recipes) // Link to recipes.xml
+    }
 }
