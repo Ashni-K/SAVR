@@ -2,6 +2,7 @@ package com.example.savr
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+
 import android.content.Intent
 import android.widget.Button
 import androidx.activity.compose.setContent
@@ -14,6 +15,7 @@ import com.example.savr.ui.theme.SAVRTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.homescreen)
         setContentView(R.layout.homescreen);
 
         val pantryButton = findViewById<Button>(R.id.button6) // "Pantry" button
@@ -32,5 +34,3 @@ class MainActivity : ComponentActivity() {
             //}
         }
     }
-}
-//}
