@@ -4,41 +4,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffc9af"
+    android:scrollIndicators="right"
     android:visibility="visible">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewPantryPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="cursive"
         android:text="Pantry Page"
-        android:textSize="60sp"
+        android:textColor="#050505"
+        android:textSize="48sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.079" />
 
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteSearch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+    <TextView
+        android:id="@+id/textViewMyPantry"
+        android:layout_width="231dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-light"
+        android:text="My Pantry"
+        android:textAlignment="center"
+        android:textColor="#494848"
+        android:textSize="34sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.195"
-        android:hint="Search ingredients"/>
+        app:layout_constraintVertical_bias="0.263" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteSearch"
+        android:layout_width="311dp"
+        android:layout_height="48dp"
+        android:backgroundTint="#F5050505"
+        android:fontFamily="sans-serif-medium"
+        android:hint="Search ingredients"
+        android:textAlignment="viewStart"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/autoCompleteSearch" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.189" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewPantry"
+        android:layout_width="297dp"
+        android:layout_height="560dp"
+        android:background="#d3a087"
+        android:scrollbars="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.836" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
