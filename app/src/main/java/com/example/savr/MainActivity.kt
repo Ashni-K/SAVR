@@ -31,10 +31,11 @@ class MainActivity : ComponentActivity() {
             val intent = Intent(this, Recipes::class.java)
             startActivity(intent)
 
+    }
         }
 
-    }
 }
+
 
 
 

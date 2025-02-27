@@ -1,5 +1,6 @@
 package com.example.savr
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher // listens for text changes that happen in autocomplete textview
@@ -40,6 +41,18 @@ class PantryActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) { // onCreate function to start an activity
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pantry) // link to load activity_pantry.xml
+
+        val home1Button = findViewById<Button>(R.id.button20) // "Pantry" button
+        home1Button.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        val recipesButton = findViewById<Button>(R.id.button14) // "Pantry" button
+        recipesButton.setOnClickListener {
+            val intent = Intent(this, Recipes::class.java)
+            startActivity(intent)
+        }
 
         val autoCompleteTextView = findViewById<AutoCompleteTextView>(R.id.autoCompleteSearch) // ui element for searching
         myPantryTitle = findViewById(R.id.textViewMyPantry) // Reference "My Pantry" title
