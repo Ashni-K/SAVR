@@ -23,6 +23,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.079" />
 
+    <Button
+        android:id="@+id/button14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#ABA44E33"
+        android:text="See all recipes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.839" />
+
     <TextView
         android:id="@+id/textViewMyPantry"
         android:layout_width="231dp"
@@ -88,7 +101,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewPantry"
         android:layout_width="297dp"
-        android:layout_height="330dp"
+        android:layout_height="560dp"
         android:background="#d3a087"
         android:scrollbars="vertical"
         android:visibility="gone"
@@ -118,5 +131,55 @@
             android:fontFamily="sans-serif-light"
             android:textSize="16sp" />
     </ScrollView>
+
+    <Button
+        android:id="@+id/button20"
+        android:layout_width="74dp"
+        android:layout_height="51dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="Home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button23"
+        app:layout_constraintHorizontal_bias="0.743"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.979" />
+
+    <Button
+        android:id="@+id/button21"
+        android:layout_width="74dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#FDFDFD"
+        android:text="Me"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.98" />
+
+    <Button
+        android:id="@+id/button22"
+        android:layout_width="98dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#FDFDFD"
+        android:text="Favorites"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button21"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.98" />
+
+    <Button
+        android:id="@+id/button23"
+        android:layout_width="98dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="12dp"
+        android:backgroundTint="#FDFDFD"
+        android:text="Pantry"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button22"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.98" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
