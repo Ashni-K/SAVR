@@ -30,6 +30,12 @@
             android:theme="@style/Theme.SAVR">
         </activity>
 
+        <activity
+            android:name=".Recipes"
+            android:theme="@style/Theme.SAVR">
+        </activity>
+
+
     </application>
 
 </manifest>
