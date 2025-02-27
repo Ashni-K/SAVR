@@ -13,6 +13,7 @@
         tools:layout_editor_absoluteY="-16dp">
 
         <ListView
+            android:id="@+id/listView"
             android:layout_width="338dp"
             android:layout_height="498dp"
             android:background="#d3a087"
@@ -76,8 +77,12 @@
             android:id="@+id/searchView3"
             android:layout_width="266dp"
             android:layout_height="50dp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="70dp" />
+            app:layout_constraintBottom_toTopOf="@+id/listView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.248"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.731" />
 
         <ImageView
             android:id="@+id/imageView4"
