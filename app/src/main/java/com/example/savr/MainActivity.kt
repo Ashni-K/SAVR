@@ -26,5 +26,15 @@ class MainActivity : ComponentActivity() {
             //  }
             //}
         }
+        val recipesButton = findViewById<Button>(R.id.button4) // "Pantry" button
+        recipesButton.setOnClickListener {
+            val intent = Intent(this, Recipes::class.java)
+            startActivity(intent)
+
+
     }
+
 }
+
+
+

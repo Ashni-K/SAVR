@@ -9,3 +9,4 @@ class Recipes : ComponentActivity() {
         setContentView(R.layout.recipes) // Link to recipes.xml
     }
 }
+
