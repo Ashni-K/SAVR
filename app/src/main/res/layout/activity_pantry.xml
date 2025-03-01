@@ -67,36 +67,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.189" />
 
-    <Button
-        android:id="@+id/buttonGetRecipes"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:text="Get Recipe Recommendations"
-        android:backgroundTint="#d3a087"
-        android:textColor="#050505"
-        android:fontFamily="sans-serif-medium"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/recyclerViewPantry"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewMyPantry"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textViewLoading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Loading recipe recommendations..."
-        android:textColor="#494848"
-        android:fontFamily="sans-serif-light"
-        android:textSize="16sp"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/buttonGetRecipes"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/recyclerViewPantry"
-        app:layout_constraintVertical_bias="0.55" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewPantry"
         android:layout_width="267dp"
@@ -110,27 +80,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.623" />
-
-    <ScrollView
-        android:layout_width="297dp"
-        android:layout_height="230dp"
-        android:background="#d3a087"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/recyclerViewPantry"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.3">
-
-        <TextView
-            android:id="@+id/textViewRecipeResults"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:textColor="#050505"
-            android:fontFamily="sans-serif-light"
-            android:textSize="16sp" />
-    </ScrollView>
 
     <Button
         android:id="@+id/button20"
