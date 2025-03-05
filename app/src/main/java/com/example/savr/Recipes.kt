@@ -30,7 +30,7 @@ class Recipes : ComponentActivity() {
     private lateinit var noRecipesTextView: TextView
     private val recipeList = mutableListOf<Recipe>()
 
-    private val apiKey = "AIzaSyBqVtZ3fxiOWMkHY1YKtN135cH_ugVpTno"
+    private val apiKey = BuildConfig.GEMINI_API_KEY
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
