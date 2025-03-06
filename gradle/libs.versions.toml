@@ -1,5 +1,5 @@
 [versions]
-agp = "8.8.1"
+agp = "8.9.0"
 appcompatVersion = "1.6.1"
 cardviewVersion = "1.0.0"
 converterGson = "2.9.0"
@@ -22,6 +22,7 @@ appcompat = "1.7.0"
 picasso = "2.71828"
 retrofit = "2.9.0"
 recyclerview = "1.4.0"
+material = "1.12.0"
 
 [libraries]
 androidx-appcompat-v161 = { module = "androidx.appcompat:appcompat", version.ref = "appcompatVersion" }
@@ -51,6 +52,7 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 
 [plugins]

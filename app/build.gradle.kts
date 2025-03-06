@@ -63,6 +63,7 @@ dependencies {
     implementation(libs.androidx.cardview)
     implementation(libs.generativeai.v060)
     implementation(libs.generativeai)
+    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

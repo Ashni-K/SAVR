@@ -13,8 +13,10 @@ import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -59,9 +61,31 @@ class PantryActivity : ComponentActivity() {
         }
 
         // Initialize RecyclerView with adapter
-        pantryAdapter = PantryAdapter(selectedIngredients)
+        pantryAdapter = PantryAdapter(selectedIngredients, this)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = pantryAdapter
+
+        // Attach swipe-to-delete functionality
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                val deletedIngredient = selectedIngredients[position]
+
+                // Remove the item from the list
+                selectedIngredients.removeAt(position)
+                pantryAdapter.notifyItemRemoved(position)
+            }
+
+        })
+        itemTouchHelper.attachToRecyclerView(recyclerView)
 
         // Make "My Pantry" and RecyclerView initially invisible
         myPantryTitle.visibility = View.GONE
@@ -134,13 +158,12 @@ class PantryActivity : ComponentActivity() {
     }
 
     data class IngredientSuggestion(val name: String)
-
-    override fun onDestroy() {
-        super.onDestroy()
-    }
 }
 
-class PantryAdapter(private val ingredients: MutableList<String>) : RecyclerView.Adapter<PantryAdapter.ViewHolder>() {
+class PantryAdapter(
+    private val ingredients: MutableList<String>,
+    private val context: PantryActivity
+) : RecyclerView.Adapter<PantryAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.ingredient_item, parent, false)
