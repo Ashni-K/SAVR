@@ -45,7 +45,7 @@
         android:textAlignment="center"
         android:textColor="#494848"
         android:textSize="34sp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,18 +69,17 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewPantry"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:layout_width="267dp"
-        android:layout_height="446dp"
+        android:layout_width="263dp"
+        android:layout_height="413dp"
         android:background="#d3a087"
         android:scrollbars="vertical"
-        android:visibility="gone"
+        android:visibility="visible"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.623" />
+        app:layout_constraintVertical_bias="0.577" />
 
     <Button
         android:id="@+id/button20"
@@ -130,6 +129,19 @@
         app:layout_constraintEnd_toStartOf="@+id/button22"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.98" />
+
+    <Button
+        android:id="@+id/clearbutton"
+        android:layout_width="82dp"
+        android:layout_height="48dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="Clear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.83" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
