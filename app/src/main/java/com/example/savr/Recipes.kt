@@ -1,5 +1,10 @@
 package com.example.savr
 
+import android.animation.Animator
+import android.animation.AnimatorInflater
+import android.animation.AnimatorSet
+import android.view.animation.DecelerateInterpolator
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -22,6 +27,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import com.squareup.picasso.Picasso
+
 
 class Recipes : ComponentActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -220,20 +226,23 @@ data class Recipe(
 class RecipeAdapter(private val recipes: List<Recipe>) : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val frontView: View = view.findViewById(R.id.cardFront)
+        val backView: View = view.findViewById(R.id.cardBack)
+
         val titleTextView: TextView = view.findViewById(R.id.recipeTitle)
         val prepTimeTextView: TextView = view.findViewById(R.id.prepTime)
         val cookTimeTextView: TextView = view.findViewById(R.id.cookTime)
         val recipeImageView: ImageView = view.findViewById(R.id.recipeImage)
         val ingredientsTextView: TextView = view.findViewById(R.id.ingredientsList)
         val instructionsTextView: TextView = view.findViewById(R.id.instructionsList)
+
+        var isFlipped = false // Track flip state
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recipe_item, parent, false)
         return ViewHolder(view)
     }
-
-    // In the RecipeAdapter class, update the onBindViewHolder method:
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val recipe = recipes[position]
@@ -242,31 +251,59 @@ class RecipeAdapter(private val recipes: List<Recipe>) : RecyclerView.Adapter<Re
         holder.prepTimeTextView.text = "Prep: ${recipe.prepTime} min"
         holder.cookTimeTextView.text = "Cook: ${recipe.cookTime} min"
 
-        // Load image using Picasso with error handling but without referencing nonexistent drawables
         Picasso.get()
             .load(recipe.imageUrl)
             .fit()
             .centerCrop()
             .into(holder.recipeImageView, object : com.squareup.picasso.Callback {
-                override fun onSuccess() {
-                    // Image loaded successfully
-                }
-
+                override fun onSuccess() {}
                 override fun onError(e: Exception?) {
                     Log.e("RecipeAdapter", "Error loading image: ${e?.message}")
                 }
             })
 
-        // Format ingredients
         val ingredientsText = recipe.ingredients.joinToString("\n• ", "• ")
         holder.ingredientsTextView.text = ingredientsText
 
-        // Format instructions
         val instructionsText = recipe.instructions.mapIndexed { index, instruction ->
             "${index + 1}. $instruction"
         }.joinToString("\n\n")
         holder.instructionsTextView.text = instructionsText
+
+        // Flip animation logic
+        holder.itemView.setOnClickListener {
+            if (!holder.isFlipped) {
+                flipCard(holder.frontView, holder.backView)
+            } else {
+                flipCard(holder.backView, holder.frontView)
+            }
+            holder.isFlipped = !holder.isFlipped
+        }
     }
 
     override fun getItemCount() = recipes.size
+
+    private fun flipCard(front: View, back: View) {
+        val animator1 = ObjectAnimator.ofFloat(front, "rotationY", 0f, 90f)
+        val animator2 = ObjectAnimator.ofFloat(back, "rotationY", -90f, 0f)
+
+        animator1.interpolator = DecelerateInterpolator()
+        animator2.interpolator = DecelerateInterpolator()
+
+        animator1.duration = 300
+        animator2.duration = 300
+
+        animator1.addListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator) {}
+            override fun onAnimationEnd(animation: Animator) {
+                front.visibility = View.GONE
+                back.visibility = View.VISIBLE
+                animator2.start()
+            }
+            override fun onAnimationCancel(animation: Animator) {}
+            override fun onAnimationRepeat(animation: Animator) {}
+        })
+
+        animator1.start()
+    }
 }
