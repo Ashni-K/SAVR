@@ -1,6 +1,8 @@
 package com.example.savr
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -18,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.IOException
@@ -29,10 +32,16 @@ class PantryActivity : ComponentActivity() {
     private lateinit var myPantryTitle: TextView
     private lateinit var recyclerView: RecyclerView
     private lateinit var seeAllRecipesButton: Button
+    private lateinit var clearButton: Button
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pantry)
+
+        clearButton = findViewById(R.id.clearbutton)
+        sharedPreferences = getSharedPreferences("PantryPrefs", Context.MODE_PRIVATE)
+        loadIngredients() // Load saved ingredients
 
         val home1Button = findViewById<Button>(R.id.button20)
         home1Button.setOnClickListener {
@@ -47,13 +56,27 @@ class PantryActivity : ComponentActivity() {
             startActivity(intent)
         }
 
+        val clearButton = findViewById<Button>(R.id.clearbutton)
+        clearButton.setOnClickListener {
+            selectedIngredients.clear() // Clear the list
+            pantryAdapter.notifyDataSetChanged() // Update RecyclerView
+            saveIngredients() // Clear saved data
+
+            // Hide UI elements since pantry is empty
+            myPantryTitle.visibility = View.GONE
+            recyclerView.visibility = View.GONE
+            seeAllRecipesButton.visibility = View.GONE
+            clearButton.visibility = View.GONE
+
+        }
+
         val autoCompleteTextView = findViewById<AutoCompleteTextView>(R.id.autoCompleteSearch)
         myPantryTitle = findViewById(R.id.textViewMyPantry)
         recyclerView = findViewById(R.id.recyclerViewPantry)
 
         // Initialize the See All Recipes button
         seeAllRecipesButton = findViewById(R.id.button14)
-        seeAllRecipesButton.visibility = View.GONE
+        seeAllRecipesButton.visibility = if (selectedIngredients.isNotEmpty()) View.VISIBLE else View.GONE
         seeAllRecipesButton.setOnClickListener {
             val intent = Intent(this, Recipes::class.java)
             intent.putStringArrayListExtra("SELECTED_INGREDIENTS", ArrayList(selectedIngredients))
@@ -61,7 +84,7 @@ class PantryActivity : ComponentActivity() {
         }
 
         // Initialize RecyclerView with adapter
-        pantryAdapter = PantryAdapter(selectedIngredients, this)
+        pantryAdapter = PantryAdapter(selectedIngredients)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = pantryAdapter
 
@@ -82,14 +105,28 @@ class PantryActivity : ComponentActivity() {
                 // Remove the item from the list
                 selectedIngredients.removeAt(position)
                 pantryAdapter.notifyItemRemoved(position)
-            }
 
+                // Save updated list
+                saveIngredients()
+                // Hide UI elements if the pantry is now empty
+                if (selectedIngredients.isEmpty()) {
+                    myPantryTitle.visibility = View.GONE
+                    recyclerView.visibility = View.GONE
+                    seeAllRecipesButton.visibility = View.GONE
+                    clearButton.visibility = View.GONE
+                }
+            }
         })
         itemTouchHelper.attachToRecyclerView(recyclerView)
 
-        // Make "My Pantry" and RecyclerView initially invisible
-        myPantryTitle.visibility = View.GONE
-        recyclerView.visibility = View.GONE
+        // Make "My Pantry" and RecyclerView visible if there are saved ingredients
+        if (selectedIngredients.isNotEmpty()) {
+            myPantryTitle.visibility = View.VISIBLE
+            recyclerView.visibility = View.VISIBLE
+        } else {
+            myPantryTitle.visibility = View.GONE
+            recyclerView.visibility = View.GONE
+        }
 
         autoCompleteTextView.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {}
@@ -120,6 +157,9 @@ class PantryActivity : ComponentActivity() {
             selectIngredient(selectedIngredient)
             autoCompleteTextView.text.clear()
         }
+
+        // Ensure the Clear button is only visible when the pantry has items
+        clearButton.visibility = if (selectedIngredients.isNotEmpty()) View.VISIBLE else View.GONE
     }
 
     private fun fetchIngredientSuggestions(query: String, callback: (List<String>) -> Unit) {
@@ -148,36 +188,33 @@ class PantryActivity : ComponentActivity() {
         if (!selectedIngredients.contains(ingredient)) {
             selectedIngredients.add(ingredient)
             pantryAdapter.notifyDataSetChanged()
+            saveIngredients() // Save the updated list
 
-            if (selectedIngredients.isNotEmpty()) {
-                myPantryTitle.visibility = View.VISIBLE
-                recyclerView.visibility = View.VISIBLE
-                seeAllRecipesButton.visibility = View.VISIBLE // Show the button when ingredients are selected
-            }
+            myPantryTitle.visibility = View.VISIBLE
+            recyclerView.visibility = View.VISIBLE
+            seeAllRecipesButton.visibility = View.VISIBLE
+            clearButton.visibility = View.VISIBLE // Show clear button
+        }
+    }
+
+    private fun saveIngredients() {
+        val editor = sharedPreferences.edit()
+        val json = Gson().toJson(selectedIngredients)
+        editor.putString("SAVED_INGREDIENTS", json)
+        editor.apply()
+    }
+
+    private fun loadIngredients() {
+        val json = sharedPreferences.getString("SAVED_INGREDIENTS", null)
+        val type = object : TypeToken<MutableList<String>>() {}.type
+        val savedList: MutableList<String>? = Gson().fromJson(json, type)
+
+        if (savedList != null) {
+            selectedIngredients.clear()
+            selectedIngredients.addAll(savedList)
         }
     }
 
     data class IngredientSuggestion(val name: String)
 }
 
-class PantryAdapter(
-    private val ingredients: MutableList<String>,
-    private val context: PantryActivity
-) : RecyclerView.Adapter<PantryAdapter.ViewHolder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.ingredient_item, parent, false)
-        return ViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val ingredient = ingredients[position]
-        holder.ingredientName.text = ingredient
-    }
-
-    override fun getItemCount(): Int = ingredients.size
-
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val ingredientName: TextView = itemView.findViewById(R.id.ingredientName)
-    }
-}
