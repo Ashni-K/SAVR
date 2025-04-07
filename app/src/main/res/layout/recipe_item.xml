@@ -47,6 +47,14 @@
                     android:id="@+id/cookTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="16dp" />
+
+                <TextView
+                    android:id="@+id/difficulty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Difficulty: Easy"
                     android:textSize="14sp" />
             </LinearLayout>
 

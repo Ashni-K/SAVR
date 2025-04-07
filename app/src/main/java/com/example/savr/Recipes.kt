@@ -167,7 +167,7 @@ class Recipes : ComponentActivity() {
 
     private fun buildPrompt(ingredients: List<String>): String {
         return """
-        You are a cooking assistant. Return exactly 5 recipe recommendations based on these ingredients: ${ingredients.joinToString(", ")}.
+        You are a cooking assistant. Return exactly 5 recipe recommendations based on these ingredients: ${ingredients.joinToString(", ")}. Each recipe must only use ingredients from the provided list (but not all ingredients need to be used).
         
         Respond with ONLY a JSON array, no markdown formatting, no extra text. Each object in the array should have:
         - "title": Recipe name (String)
@@ -176,6 +176,7 @@ class Recipes : ComponentActivity() {
         - "imageUrl": Valid image URL (use "https://via.placeholder.com/150" if unavailable)
         - "prepTime": Integer (minutes)
         - "cookTime": Integer (minutes)
+        - "difficulty": String (easy, medium, hard, etc.)
         
         Example format (return ONLY valid JSON like this):
         [
@@ -185,7 +186,8 @@ class Recipes : ComponentActivity() {
                 "instructions": ["Boil pasta", "Mix with tomatoes and oil", "Serve chilled"],
                 "imageUrl": "https://via.placeholder.com/150",
                 "prepTime": 10,
-                "cookTime": 15
+                "cookTime": 15,
+                "difficulty": "easy"
             }
         ]
     """.trimIndent()
@@ -219,7 +221,8 @@ data class Recipe(
     val instructions: List<String>,
     val imageUrl: String,
     val prepTime: Int,
-    val cookTime: Int
+    val cookTime: Int,
+    val difficulty: String
 )
 
 // Adapter for displaying recipes
@@ -232,6 +235,7 @@ class RecipeAdapter(private val recipes: List<Recipe>) : RecyclerView.Adapter<Re
         val titleTextView: TextView = view.findViewById(R.id.recipeTitle)
         val prepTimeTextView: TextView = view.findViewById(R.id.prepTime)
         val cookTimeTextView: TextView = view.findViewById(R.id.cookTime)
+        val difficultyTextView: TextView = view.findViewById(R.id.difficulty)
         val recipeImageView: ImageView = view.findViewById(R.id.recipeImage)
         val ingredientsTextView: TextView = view.findViewById(R.id.ingredientsList)
         val instructionsTextView: TextView = view.findViewById(R.id.instructionsList)
@@ -250,6 +254,7 @@ class RecipeAdapter(private val recipes: List<Recipe>) : RecyclerView.Adapter<Re
         holder.titleTextView.text = recipe.title
         holder.prepTimeTextView.text = "Prep: ${recipe.prepTime} min"
         holder.cookTimeTextView.text = "Cook: ${recipe.cookTime} min"
+        holder.difficultyTextView.text = "Difficulty: ${recipe.difficulty}"
 
         Picasso.get()
             .load(recipe.imageUrl)
