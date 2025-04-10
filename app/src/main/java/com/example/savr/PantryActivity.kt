@@ -100,7 +100,6 @@ class PantryActivity : ComponentActivity() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-                val deletedIngredient = selectedIngredients[position]
 
                 // Remove the item from the list
                 selectedIngredients.removeAt(position)
