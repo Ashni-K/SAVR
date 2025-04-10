@@ -28,7 +28,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import com.squareup.picasso.Picasso
 
-//image API = NPaqzxre3cvyLFoOn25OTbmW454Dsj7Cz4L4vf0XyJcj3STXxqUmYZEv
+//image API key = NPaqzxre3cvyLFoOn25OTbmW454Dsj7Cz4L4vf0XyJcj3STXxqUmYZEv
 
 class Recipes : ComponentActivity() {
     private lateinit var recyclerView: RecyclerView
