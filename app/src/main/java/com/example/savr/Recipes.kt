@@ -223,7 +223,8 @@ data class Recipe(
     val imageUrl: String,
     val prepTime: Int,
     val cookTime: Int,
-    val difficulty: String
+    val difficulty: String,
+    val cuisine: String
 )
 
 // Adapter for displaying recipes
