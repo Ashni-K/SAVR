@@ -178,6 +178,7 @@ class Recipes : ComponentActivity() {
         - "prepTime": Integer (minutes)
         - "cookTime": Integer (minutes)
         - "difficulty": String (easy, medium, hard, etc.)
+        - "cuisine": String (e.g., "Mexican", "Italian", "Fusion", "Asian", "Native American", etc.)
         
         Example format (return ONLY valid JSON like this):
         [
@@ -188,7 +189,8 @@ class Recipes : ComponentActivity() {
                 "imageUrl": "https://via.placeholder.com/150",
                 "prepTime": 10,
                 "cookTime": 15,
-                "difficulty": "easy"
+                "difficulty": "easy",
+                "cuisine": "Italian"
             }
         ]
     """.trimIndent()
@@ -238,6 +240,7 @@ class RecipeAdapter(private val recipes: List<Recipe>) : RecyclerView.Adapter<Re
         val prepTimeTextView: TextView = view.findViewById(R.id.prepTime)
         val cookTimeTextView: TextView = view.findViewById(R.id.cookTime)
         val difficultyTextView: TextView = view.findViewById(R.id.difficulty)
+        val cuisineTextView: TextView = view.findViewById(R.id.cuisine)
         val recipeImageView: ImageView = view.findViewById(R.id.recipeImage)
         val ingredientsTextView: TextView = view.findViewById(R.id.ingredientsList)
         val instructionsTextView: TextView = view.findViewById(R.id.instructionsList)
@@ -257,6 +260,7 @@ class RecipeAdapter(private val recipes: List<Recipe>) : RecyclerView.Adapter<Re
         holder.prepTimeTextView.text = "Prep: ${recipe.prepTime} min"
         holder.cookTimeTextView.text = "Cook: ${recipe.cookTime} min"
         holder.difficultyTextView.text = "Difficulty: ${recipe.difficulty}"
+        holder.cuisineTextView.text = "Cuisine: ${recipe.cuisine}"
 
         Picasso.get()
             .load(recipe.imageUrl)
