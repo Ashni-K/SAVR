@@ -79,6 +79,16 @@
                     android:textSize="14sp" />
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/nutritionInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nutrition info here"
+                android:textSize="14sp"
+                android:textColor="#c57262"
+                android:layout_marginTop="8dp"
+                />
+
             <ImageView
                 android:id="@+id/recipeImage"
                 android:layout_width="match_parent"
