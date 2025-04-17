@@ -125,13 +125,20 @@ class Recipes : ComponentActivity() {
                 // Parse the JSON response
                 val parsedRecipes = parseRecipeResponse(jsonResponse)
 
+                val updatedRecipes = withContext(Dispatchers.IO) {
+                    parsedRecipes.map { recipe ->
+                        val imageUrl = fetchImageForRecipe(recipe.title)
+                        recipe.copy(imageUrl = imageUrl)
+                    }
+                }
+
                 // Update the UI on the main thread
                 withContext(Dispatchers.Main) {
                     progressBar.visibility = View.GONE
 
                     if (parsedRecipes.isNotEmpty()) {
                         recipeList.clear()
-                        recipeList.addAll(parsedRecipes)
+                        recipeList.addAll(updatedRecipes)
                         recipeAdapter.notifyDataSetChanged()
                         noRecipesTextView.visibility = View.GONE
                     } else {
@@ -215,6 +222,15 @@ class Recipes : ComponentActivity() {
         } catch (e: Exception) {
             Log.e("JSON_PARSE", "Unknown error parsing JSON: ${e.message}")
             emptyList()
+        }
+    }
+    suspend fun fetchImageForRecipe(query: String): String {
+        return try {
+            val response = PexelsApiClient.instance.searchPhotos(query)
+            response.photos.firstOrNull()?.src?.large ?: "https://via.placeholder.com/150"
+        } catch (e: Exception) {
+            Log.e("PexelsAPI", "Error fetching image for $query: ${e.message}")
+            "https://via.placeholder.com/150"
         }
     }
 }
