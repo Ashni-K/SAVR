@@ -186,6 +186,7 @@ class Recipes : ComponentActivity() {
         - "cookTime": Integer (minutes)
         - "difficulty": String (easy, medium, hard, etc.)
         - "cuisine": String (e.g., "Mexican", "Italian", "Fusion", "Asian", "Native American", etc.)
+        - "nutrition": String (e.g., "Calories: 250, Protein: 10g, Fat: 8g, Fiber: 6g")
         
         Example format (return ONLY valid JSON like this):
         [
@@ -197,7 +198,8 @@ class Recipes : ComponentActivity() {
                 "prepTime": 10,
                 "cookTime": 15,
                 "difficulty": "easy",
-                "cuisine": "Italian"
+                "cuisine": "Italian",
+                "nutrition": "Calories: 250, Protein: 10g, Fat: 8g, Fiber: 6g"
             }
         ]
     """.trimIndent()
@@ -242,7 +244,8 @@ data class Recipe(
     val prepTime: Int,
     val cookTime: Int,
     val difficulty: String,
-    val cuisine: String
+    val cuisine: String,
+    val nutrition: String
 )
 
 // Adapter for displaying recipes
@@ -257,6 +260,7 @@ class RecipeAdapter(private val recipes: List<Recipe>) : RecyclerView.Adapter<Re
         val cookTimeTextView: TextView = view.findViewById(R.id.cookTime)
         val difficultyTextView: TextView = view.findViewById(R.id.difficulty)
         val cuisineTextView: TextView = view.findViewById(R.id.cuisine)
+        val nutritionTextView: TextView = view.findViewById(R.id.nutritionInfo)
         val recipeImageView: ImageView = view.findViewById(R.id.recipeImage)
         val ingredientsTextView: TextView = view.findViewById(R.id.ingredientsList)
         val instructionsTextView: TextView = view.findViewById(R.id.instructionsList)
@@ -277,6 +281,7 @@ class RecipeAdapter(private val recipes: List<Recipe>) : RecyclerView.Adapter<Re
         holder.cookTimeTextView.text = "Cook: ${recipe.cookTime} min"
         holder.difficultyTextView.text = "Difficulty: ${recipe.difficulty}"
         holder.cuisineTextView.text = "Cuisine: ${recipe.cuisine}"
+        holder.nutritionTextView.text = recipe.nutrition
 
         Picasso.get()
             .load(recipe.imageUrl)

@@ -94,7 +94,7 @@
             android:layout_width="292dp"
             android:layout_height="397dp"
             android:layout_marginTop="140dp"
-            android:src="@drawable/baked_goods_1"
+            android:src="@drawable/savr_logo"
             app:layout_constraintBottom_toTopOf="@+id/button4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
