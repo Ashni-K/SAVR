@@ -1,111 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffc9af">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
+        android:id="@+id/contentFrameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-16dp">
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button30"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <Button
-            android:id="@+id/button30"
-            android:layout_width="74dp"
-            android:layout_height="51dp"
-            android:backgroundTint="#FFFFFF"
-            android:text="Home"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button33"
-            app:layout_constraintHorizontal_bias="0.743"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.98" />
-
-        <Button
-            android:id="@+id/button31"
-            android:layout_width="74dp"
-            android:layout_height="51dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="#FDFDFD"
-            android:text="Me"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button32"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.98" />
-
-        <Button
-            android:id="@+id/button32"
-            android:layout_width="98dp"
-            android:layout_height="51dp"
-            android:layout_marginEnd="8dp"
-            android:backgroundTint="#FDFDFD"
-            android:text="Favorites"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button31"
-            app:layout_constraintStart_toEndOf="@+id/button33"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.98" />
-
-        <Button
-            android:id="@+id/button33"
-            android:layout_width="98dp"
-            android:layout_height="51dp"
-            android:layout_marginEnd="12dp"
-            android:backgroundTint="#FDFDFD"
-            android:text="Pantry"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button32"
-            app:layout_constraintStart_toEndOf="@+id/button30"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.98" />
-
-        <FrameLayout
+        <View
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/button30"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            android:layout_height="200dp"
+            android:background="@android:color/transparent" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@android:color/transparent" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewRecipes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="200dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="8dp"
+            android:clipToPadding="false" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewRecipes"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingTop="200dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingBottom="8dp"
-                android:clipToPadding="false" />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:visibility="gone" />
 
-            <ProgressBar
-                android:id="@+id/progressBar"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:visibility="gone" />
+        <TextView
+            android:id="@+id/noRecipesText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="No ingredients selected. Add ingredients in your pantry to get recipe recommendations."
+            android:textSize="16sp"
+            android:visibility="gone" />
+    </FrameLayout>
 
-            <TextView
-                android:id="@+id/noRecipesText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:padding="16dp"
-                android:text="No ingredients selected. Add ingredients in your pantry to get recipe recommendations."
-                android:textSize="16sp"
-                android:visibility="gone" />
-        </FrameLayout>
+    <Button
+        android:id="@+id/button30"
+        android:layout_width="74dp"
+        android:layout_height="51dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="Home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button33"
+        app:layout_constraintHorizontal_bias="0.743"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.979" />
 
+    <Button
+        android:id="@+id/button31"
+        android:layout_width="74dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#FDFDFD"
+        android:text="Me"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.979" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/button32"
+        android:layout_width="98dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#FDFDFD"
+        android:text="Favorites"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button31"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.979" />
+
+    <Button
+        android:id="@+id/button33"
+        android:layout_width="98dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="12dp"
+        android:backgroundTint="#FDFDFD"
+        android:text="Pantry"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button32"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.979" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
