@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardBackgroundColor="#fceeee"
+    app:cardBackgroundColor="#F7F8FA"
     app:cardCornerRadius="10dp"
     app:cardElevation="4dp">
 
@@ -17,7 +17,7 @@
             android:id="@+id/cardFront"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#F4D8D8"
+            android:background="#fff8e7"
             android:orientation="vertical"
             android:padding="16dp">
 
@@ -26,8 +26,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:fontFamily="monospace"
-                android:textColor="#a03b3c"
+                android:fontFamily="serif"
+                android:textColor="#5d0703"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -42,8 +42,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:fontFamily="monospace"
-                    android:textColor="#c57262"
+                    android:fontFamily="serif"
+                    android:textColor="#5d0703"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -52,8 +52,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:fontFamily="monospace"
-                    android:textColor="#c57262"
+                    android:fontFamily="serif"
+                    android:textColor="#5d0703"
                     android:textSize="14sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -69,7 +69,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:textColor="#c57262"
+                    android:fontFamily="serif"
+                    android:textColor="#5d0703"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -77,7 +78,8 @@
                     android:id="@+id/cuisine"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#c57262"
+                    android:fontFamily="serif"
+                    android:textColor="#5d0703"
                     android:textSize="15sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -87,9 +89,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:fontFamily="monospace"
+                android:fontFamily="serif"
                 android:text="Nutrition info here"
-                android:textColor="#c57262"
+                android:textColor="#5D0703"
                 android:textSize="15sp" />
 
             <ImageView
@@ -115,10 +117,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:fontFamily="serif"
                 android:text="Ingredients:"
                 android:textColor="#a03b3c"
-                android:textSize="18sp"
 
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -126,6 +129,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:fontFamily="serif"
                 android:textColor="#c57262"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -134,6 +138,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:fontFamily="serif"
                 android:text="Instructions:"
                 android:textColor="#a03b3c"
                 android:textSize="18sp"
@@ -143,11 +148,12 @@
                 android:id="@+id/instructionsList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="serif"
                 android:textColor="#c57262"
-                android:fontFamily="FF Nexus Serif"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
-    </FrameLayout>olive
+    </FrameLayout>
+    olive
 </androidx.cardview.widget.CardView>
