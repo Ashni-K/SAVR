@@ -149,5 +149,5 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
-    </FrameLayout>olive
+    </FrameLayout>
 </androidx.cardview.widget.CardView>
