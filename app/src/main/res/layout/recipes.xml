@@ -3,7 +3,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#5d0703">
 
@@ -16,7 +16,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <View
+
+    <View
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@android:color/transparent" />
@@ -61,7 +62,7 @@
             app:layout_constraintHorizontal_bias="0.743"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.98" />
+            app:layout_constraintVertical_bias="0.979" />
 
         <Button
             android:id="@+id/button31"
@@ -72,9 +73,8 @@
             android:text="Me"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button32"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.98" />
+            app:layout_constraintVertical_bias="0.979" />
 
         <Button
             android:id="@+id/button32"
@@ -85,9 +85,8 @@
             android:text="Favorites"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button31"
-            app:layout_constraintStart_toEndOf="@+id/button33"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.98" />
+            app:layout_constraintVertical_bias="0.979" />
 
         <Button
             android:id="@+id/button33"
@@ -98,9 +97,8 @@
             android:text="Pantry"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button32"
-            app:layout_constraintStart_toEndOf="@+id/button30"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.98" />
+            app:layout_constraintVertical_bias="0.979" />
 
         <HorizontalScrollView
             android:layout_width="409dp"
