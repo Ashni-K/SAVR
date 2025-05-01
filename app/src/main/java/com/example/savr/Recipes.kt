@@ -27,6 +27,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 
 //image API key = NPaqzxre3cvyLFoOn25OTbmW454Dsj7Cz4L4vf0XyJcj3STXxqUmYZEv
 
@@ -126,17 +128,22 @@ class Recipes : ComponentActivity() {
                 val parsedRecipes = parseRecipeResponse(jsonResponse)
 
                 val updatedRecipes = withContext(Dispatchers.IO) {
-                    parsedRecipes.map { recipe ->
-                        val imageUrl = fetchImageForRecipe(recipe.title)
-                        recipe.copy(imageUrl = imageUrl)
+                    // Create a list of deferred results using async
+                    val deferredResults = parsedRecipes.map { recipe ->
+                        async {
+                            val imageUrl = fetchImageForRecipe(recipe.title)
+                            recipe.copy(imageUrl = imageUrl)
+                        }
                     }
+                    // Await all results to complete in parallel
+                    deferredResults.awaitAll()
                 }
 
                 // Update the UI on the main thread
                 withContext(Dispatchers.Main) {
                     progressBar.visibility = View.GONE
 
-                    if (parsedRecipes.isNotEmpty()) {
+                    if (updatedRecipes.isNotEmpty()) {
                         recipeList.clear()
                         recipeList.addAll(updatedRecipes)
                         recipeAdapter.notifyDataSetChanged()
@@ -175,7 +182,7 @@ class Recipes : ComponentActivity() {
 
     private fun buildPrompt(ingredients: List<String>): String {
         return """
-        You are a cooking assistant. Return exactly 5 recipe recommendations based on these ingredients: ${ingredients.joinToString(", ")}. Each recipe must only use ingredients from the provided list (but not all ingredients need to be used).
+        You are a cooking assistant. Return exactly 12 recipe recommendations based on these ingredients: ${ingredients.joinToString(", ")}. Each recipe must only use ingredients from the provided list (but not all ingredients need to be used).
         
         Respond with ONLY a JSON array, no markdown formatting, no extra text. Each object in the array should have:
         - "title": Recipe name (String)
