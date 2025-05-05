@@ -30,9 +30,15 @@ class MainActivity : ComponentActivity() {
         recipesButton.setOnClickListener {
             val intent = Intent(this, Recipes::class.java)
             startActivity(intent)
-
-    }
         }
+
+        val favoritesButton = findViewById<Button>(R.id.button3) // "Favorites" button
+        favoritesButton.setOnClickListener {
+            val intent = Intent(this, FavoritesActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
 
 }
 
