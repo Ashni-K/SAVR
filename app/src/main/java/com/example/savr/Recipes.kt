@@ -231,12 +231,16 @@ class Recipes : ComponentActivity() {
             emptyList()
         }
     }
-    suspend fun fetchImageForRecipe(query: String): String {
+    suspend fun fetchImageForRecipe(recipeName: String): String {
+        val query = "$recipeName food dish meal"
+
         return try {
             val response = PexelsApiClient.instance.searchPhotos(query)
-            response.photos.firstOrNull()?.src?.large ?: "https://via.placeholder.com/150"
+            val imageUrl = response.photos.firstOrNull()?.src?.large
+
+            imageUrl ?: "https://via.placeholder.com/150"
         } catch (e: Exception) {
-            Log.e("PexelsAPI", "Error fetching image for $query: ${e.message}")
+            Log.e("PexelsAPI", "Error fetching image for $recipeName: ${e.message}")
             "https://via.placeholder.com/150"
         }
     }
