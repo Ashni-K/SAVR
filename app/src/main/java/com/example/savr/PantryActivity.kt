@@ -56,6 +56,12 @@ class PantryActivity : ComponentActivity() {
             startActivity(intent)
         }
 
+        val favoritesButton = findViewById<Button>(R.id.button22)
+        favoritesButton.setOnClickListener {
+            val intent = Intent(this, FavoritesActivity::class.java)
+            startActivity(intent)
+        }
+
         val clearButton = findViewById<Button>(R.id.clearbutton)
         clearButton.setOnClickListener {
             selectedIngredients.clear() // Clear the list
