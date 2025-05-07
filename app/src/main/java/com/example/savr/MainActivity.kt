@@ -26,11 +26,6 @@ class MainActivity : ComponentActivity() {
             //  }
             //}
         }
-        val recipesButton = findViewById<Button>(R.id.button4) // "Recipe" button
-        recipesButton.setOnClickListener {
-            val intent = Intent(this, Recipes::class.java)
-            startActivity(intent)
-        }
 
         val favoritesButton = findViewById<Button>(R.id.button3) // "Favorites" button
         favoritesButton.setOnClickListener {
