@@ -1,158 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardBackgroundColor="#F7F8FA"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="4dp">
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    android:foreground="?android:attr/selectableItemBackground">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- Front Side of the Card -->
+        <!-- Front of card -->
         <LinearLayout
             android:id="@+id/cardFront"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fff8e7"
             android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:id="@+id/recipeTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="serif"
-                android:textColor="#5d0703"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/prepTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="serif"
-                    android:textColor="#5d0703"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/cookTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="serif"
-                    android:textColor="#5d0703"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/difficulty"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="serif"
-                    android:textColor="#5d0703"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/cuisine"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="serif"
-                    android:textColor="#5d0703"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/nutritionInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="serif"
-                android:text="Nutrition info here"
-                android:textColor="#5D0703"
-                android:textSize="15sp" />
+            android:visibility="visible">
 
             <ImageView
                 android:id="@+id/recipeImage"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginBottom="16dp"
-                android:contentDescription="Recipe Image"
-                android:scaleType="centerCrop" />
+                android:layout_height="180dp"
+                android:scaleType="centerCrop"
+                android:contentDescription="Recipe Image" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/recipeTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:text="Recipe Title"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="#a03b3c" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/prepTime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:layout_weight="1"
+                        android:text="Prep: 15 min"
+                        android:textColor="#a03b3c" />
+
+                    <TextView
+                        android:id="@+id/cookTime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:layout_weight="1"
+                        android:text="Cook: 30 min"
+                        android:textColor="#a03b3c"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/difficulty"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:layout_weight="1"
+                        android:text="Difficulty: Easy"
+                        android:textColor="#a03b3c"/>
+
+                    <TextView
+                        android:id="@+id/cuisine"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:layout_weight="1"
+                        android:text="Cuisine: Italian"
+                        android:textColor="#a03b3c"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/nutritionInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:text="Calories: 250, Protein: 10g"
+                    android:layout_marginTop="8dp"
+                    android:textSize="12sp"
+                    android:textColor="#a03b3c" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:text="Tap for ingredients and instructions"
+                    android:textSize="12sp"
+                    android:textStyle="italic"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:textColor="#a03b3c" />
+            </LinearLayout>
         </LinearLayout>
 
-        <!-- Back Side of the Card (Initially Hidden) -->
+        <!-- Back of card -->
         <LinearLayout
             android:id="@+id/cardBack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fceeee"
             android:orientation="vertical"
             android:padding="16dp"
-            android:visibility="gone">  <!-- Initially Hidden -->
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:fontFamily="serif"
-                android:text="Ingredients:"
-                android:textColor="#a03b3c"
-
+                android:text="Ingredients"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"
+                android:textColor="#a03b3c" />
 
             <TextView
                 android:id="@+id/ingredientsList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 android:fontFamily="serif"
-                android:textColor="#c57262"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                android:text="• Ingredient 1\n• Ingredient 2\n• Ingredient 3"
+                android:layout_marginBottom="16dp"
+                android:textColor="#a03b3c" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:fontFamily="serif"
-                android:text="Instructions:"
-                android:textColor="#a03b3c"
+                android:text="Instructions"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"
+                android:textColor="#a03b3c" />
 
             <TextView
                 android:id="@+id/instructionsList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="serif"
-                android:textColor="#c57262"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                android:text="1. Step one\n2. Step two\n3. Step three"
+                android:textColor="#a03b3c" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="Tap to flip back"
+                android:textSize="12sp"
+                android:textStyle="italic"
+                android:gravity="center"
+                android:layout_marginTop="16dp"
+                android:textColor="#a03b3c" />
         </LinearLayout>
     </FrameLayout>
 </androidx.cardview.widget.CardView>
