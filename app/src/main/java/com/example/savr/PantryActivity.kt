@@ -70,6 +70,13 @@ class PantryActivity : ComponentActivity() {
 
         }
 
+        val favoritesButton = findViewById<Button>(R.id.button22) // "Favorites" button
+        favoritesButton.setOnClickListener {
+            val intent = Intent(this, FavoritesActivity::class.java)
+            startActivity(intent)
+
+        }
+
         val autoCompleteTextView = findViewById<AutoCompleteTextView>(R.id.autoCompleteSearch)
         myPantryTitle = findViewById(R.id.textViewMyPantry)
         recyclerView = findViewById(R.id.recyclerViewPantry)
