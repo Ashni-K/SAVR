@@ -69,7 +69,7 @@ class Recipes : ComponentActivity() {
 
         val favoritesButton = findViewById<Button>(R.id.button32)
         favoritesButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, FavoritesActivity::class.java)
             startActivity(intent)
         }
 
