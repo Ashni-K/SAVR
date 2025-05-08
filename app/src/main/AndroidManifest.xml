@@ -35,6 +35,11 @@
             android:theme="@style/Theme.SAVR">
         </activity>
 
+        <activity
+            android:name=".FavoritesActivity"
+            android:theme="@style/Theme.SAVR">
+        </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
