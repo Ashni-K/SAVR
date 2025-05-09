@@ -1,6 +1,5 @@
 package com.example.savr
 
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -10,7 +9,6 @@ import retrofit2.http.Query
 
 object PexelsApiClient {
     private const val BASE_URL = "https://api.pexels.com/v1/"
-    private const val API_KEY = "NPaqzxre3cvyLFoOn25OTbmW454Dsj7Cz4L4vf0XyJcj3STXxqUmYZEv"
 
     private val logging = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BASIC
@@ -20,7 +18,7 @@ object PexelsApiClient {
         .addInterceptor(logging)
         .addInterceptor { chain ->
             val request = chain.request().newBuilder()
-                .addHeader("Authorization", API_KEY)
+                .addHeader("Authorization", BuildConfig.PEXELS_API_KEY) // <- pulled from local.properties!
                 .build()
             chain.proceed(request)
         }
