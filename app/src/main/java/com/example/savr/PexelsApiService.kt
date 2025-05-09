@@ -7,6 +7,10 @@ interface PexelsApiService {
     @GET("search")
     suspend fun searchPhotos(
         @Query("query") query: String,
-        @Query("per_page") perPage: Int = 1
-    ): PexelsSearchResponse
+        @Query("per_page") perPage: Int = 3
+    ): PexelsResponse
 }
+
+data class PexelsResponse(
+    val photos: List<PexelsPhoto>
+)
