@@ -10,9 +10,11 @@ SAVR is a recipe management Android app designed to help users easily search, fi
 - Clean, user-friendly interface built with Android Studio and Kotlin
 
 **Background**
+
 This app was built as part of a team project to explore real-world Android development. We focused on creating a clean UI, integrating a third-party image API, and solving common UX problems like ingredient filtering.
 
-Why SAVR?
+**Why SAVR?**
+
 Unlike other basic recipe apps, SAVR emphasizes personalization. By letting users filter based on what they already have, it reduces food waste and makes cooking way more convenient.
 
 ## Visuals
@@ -37,6 +39,7 @@ Setup steps:
 Once the app is installed and running, here’s how to start using SAVR:
 
 **Searching Recipes**
+
 Use the search bar at the top to find recipes by name or main ingredient.
 
 **Tap "Apply Filters" to filter by:**
@@ -53,9 +56,13 @@ Use the search bar at the top to find recipes by name or main ingredient.
 
 ## Support
 Feel free to reach out to us through our email!
+
 Dinajda - dd3298@drexel.edu
+
 Spoorthi - sp3932@drexel.edu
+
 Ashni - apk66@drexel.edu
+
 Anya - amp638@drexel.edu
 
 ## Roadmap
