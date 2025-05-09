@@ -5,9 +5,12 @@ data class PexelsSearchResponse(
 )
 
 data class PexelsPhoto(
-    val src: PexelsSrc
+    val width: Int,
+    val height: Int,
+    val alt: String?,
+    val src: Src
 )
 
-data class PexelsSrc(
+data class Src(
     val large: String
 )

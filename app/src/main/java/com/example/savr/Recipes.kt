@@ -33,9 +33,8 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.net.URLEncoder
 
-
-//image API key = NPaqzxre3cvyLFoOn25OTbmW454Dsj7Cz4L4vf0XyJcj3STXxqUmYZEv
 
 class Recipes : ComponentActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -372,12 +371,16 @@ class Recipes : ComponentActivity() {
         }
     }
 
-    suspend fun fetchImageForRecipe(query: String): String {
+    suspend fun fetchImageForRecipe(recipeName: String): String {
+        val query = "$recipeName food dish meal"
+
         return try {
             val response = PexelsApiClient.instance.searchPhotos(query)
-            response.photos.firstOrNull()?.src?.large ?: "https://via.placeholder.com/150"
+            val imageUrl = response.photos.firstOrNull()?.src?.large
+
+            imageUrl ?: "https://via.placeholder.com/150"
         } catch (e: Exception) {
-            Log.e("PexelsAPI", "Error fetching image for $query: ${e.message}")
+            Log.e("PexelsAPI", "Error fetching image for $recipeName: ${e.message}")
             "https://via.placeholder.com/150"
         }
     }
@@ -444,6 +447,9 @@ class RecipeFilterAdapter(private var allRecipes: List<Recipe>) : RecyclerView.A
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val recipe = filteredRecipes[position]
+
+        Log.d("IMAGE_URL_CHECK", "Loading image: ${recipe.imageUrl}")
+
 
         holder.titleTextView.text = recipe.title
         holder.prepTimeTextView.text = "Prep: ${recipe.prepTime} min"
