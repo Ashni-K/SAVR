@@ -3,6 +3,7 @@ package com.example.savr
 import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -404,6 +405,8 @@ class RecipeFilterAdapter(private var allRecipes: List<Recipe>) : RecyclerView.A
 
     // List of recipes after filters are applied
     private var filteredRecipes: List<Recipe> = allRecipes.toList()
+    private lateinit var favoritesManager: FavoritesManager
+    private lateinit var context: Context
 
     // Filter states
     private var maxPrepTime: Int? = null
@@ -436,12 +439,16 @@ class RecipeFilterAdapter(private var allRecipes: List<Recipe>) : RecyclerView.A
         val recipeImageView: ImageView = view.findViewById(R.id.recipeImage)
         val ingredientsTextView: TextView = view.findViewById(R.id.ingredientsList)
         val instructionsTextView: TextView = view.findViewById(R.id.instructionsList)
+        val favoriteButtonFront: Button = view.findViewById(R.id.favoriteLabelFront)
+        val favoriteButtonBack: Button = view.findViewById(R.id.favoriteLabelBack)
 
         var isFlipped = false // Track flip state
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recipe_item, parent, false)
+        context = parent.context
+        favoritesManager = FavoritesManager.getInstance(context)
         return ViewHolder(view)
     }
 
@@ -477,6 +484,18 @@ class RecipeFilterAdapter(private var allRecipes: List<Recipe>) : RecyclerView.A
         }.joinToString("\n\n")
         holder.instructionsTextView.text = instructionsText
 
+        // Set favorite button state and click listeners
+        updateFavoriteButtons(holder, recipe)
+
+        // Set favorite button click listeners
+        holder.favoriteButtonFront.setOnClickListener {
+            toggleFavorite(holder, recipe)
+        }
+
+        holder.favoriteButtonBack.setOnClickListener {
+            toggleFavorite(holder, recipe)
+        }
+
         // Flip animation logic
         holder.itemView.setOnClickListener {
             if (!holder.isFlipped) {
@@ -486,6 +505,29 @@ class RecipeFilterAdapter(private var allRecipes: List<Recipe>) : RecyclerView.A
             }
             holder.isFlipped = !holder.isFlipped
         }
+    }
+
+    // Toggle favorite status
+    private fun toggleFavorite(holder: ViewHolder, recipe: Recipe) {
+        val isFavorite = favoritesManager.isFavorite(recipe)
+
+        if (isFavorite) {
+            favoritesManager.removeFavorite(recipe)
+        } else {
+            favoritesManager.addFavorite(recipe)
+        }
+
+        // Update button text
+        updateFavoriteButtons(holder, recipe)
+    }
+
+    // Update favorite button text based on favorite status
+    private fun updateFavoriteButtons(holder: ViewHolder, recipe: Recipe) {
+        val isFavorite = favoritesManager.isFavorite(recipe)
+
+        val buttonText = if (isFavorite) "Remove from favorites" else "Add to favorites"
+        holder.favoriteButtonFront.text = buttonText
+        holder.favoriteButtonBack.text = buttonText
     }
 
     override fun getItemCount() = filteredRecipes.size
