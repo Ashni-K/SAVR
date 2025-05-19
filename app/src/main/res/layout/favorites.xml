@@ -14,7 +14,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="serif"
         android:text="My Favorite Recipes"
-        android:textColor="#a03b3c"
+        android:textColor="#fff8e7"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#f5f5f5"
+        android:background="#5d0703"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="8dp">
