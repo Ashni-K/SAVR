@@ -7,20 +7,18 @@
     android:padding="16dp"
     android:background="#5d0703">
 
-    <TextView
-        android:id="@+id/login_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:fontFamily="cursive"
-        android:text="SAVR"
-        android:textColor="#fff8e7"
-        android:textSize="48sp"
-        android:textStyle="bold"
+    <ImageView
+        android:id="@+id/headingImage"
+        android:layout_width="283dp"
+        android:layout_height="140dp"
+        android:contentDescription="heading"
+        android:scaleType="fitCenter"
+        android:src="@drawable/heading"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.134" />
 
     <!-- Email Entry -->
     <EditText
@@ -33,7 +31,7 @@
         android:inputType="textEmailAddress"
         android:padding="12dp"
         android:backgroundTint="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/login_logo"
+        app:layout_constraintTop_toBottomOf="@id/headingImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
