@@ -7,20 +7,22 @@
     android:background="#5d0703">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:fontFamily="cursive"
-        android:text="SAVR"
-        android:textColor=" #fff8e7"
-        android:textSize="48sp"
+        android:id="@+id/descriptionText"
+        android:layout_width="334dp"
+        android:layout_height="163dp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:padding="16dp"
+        android:text="making meals you love, as simple as savoring what you love."
+        android:textColor="#fff"
+        android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.835" />
 
     <Button
         android:id="@+id/button2"
@@ -73,6 +75,62 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.979" />
+
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="274dp"
+        android:layout_height="438dp"
+        android:contentDescription="SAVR Logo"
+        android:scaleType="fitCenter"
+        android:src="@drawable/spaghettiicon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.534" />
+
+    <ImageView
+        android:id="@+id/forkImage"
+        android:layout_width="248dp"
+        android:layout_height="239dp"
+        android:layout_marginStart="236dp"
+        android:contentDescription="Fork"
+        android:rotation="-135"
+        android:scaleType="fitCenter"
+        android:src="@drawable/forkpng"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.369" />
+
+    <ImageView
+        android:id="@+id/spoonImage"
+        android:layout_width="254dp"
+        android:layout_height="238dp"
+        android:layout_marginEnd="244dp"
+        android:contentDescription="Spoon"
+        android:rotation="-45"
+        android:rotationX="0"
+        android:scaleType="fitCenter"
+        android:src="@drawable/spoonpng"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.37" />
+
+    <ImageView
+        android:id="@+id/headingImage"
+        android:layout_width="325dp"
+        android:layout_height="260dp"
+        android:contentDescription="heading"
+        android:scaleType="fitCenter"
+        android:src="@drawable/heading"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.025" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
