@@ -14,7 +14,7 @@
         android:gravity="center"
         android:lineSpacingExtra="4dp"
         android:padding="16dp"
-        android:text="making meals you love, as simple as savoring what you love."
+        android:text="Making meals you love is as simple as savoring what you love."
         android:textColor="#fff"
         android:textSize="24sp"
         android:textStyle="bold"
