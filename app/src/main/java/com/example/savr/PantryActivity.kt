@@ -49,6 +49,12 @@ class PantryActivity : ComponentActivity() {
             startActivity(intent)
         }
 
+        val Me3Button = findViewById<Button>(R.id.button21)
+        Me3Button.setOnClickListener {
+            val intent = Intent(this, MeActivity::class.java)
+            startActivity(intent)
+        }
+
         val recipesButton = findViewById<Button>(R.id.button14)
         recipesButton.setOnClickListener {
             val intent = Intent(this, Recipes::class.java)

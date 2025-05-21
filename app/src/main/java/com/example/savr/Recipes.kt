@@ -34,7 +34,6 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.net.URLEncoder
 
 
 class Recipes : ComponentActivity() {
@@ -58,6 +57,12 @@ class Recipes : ComponentActivity() {
         val homeButton = findViewById<Button>(R.id.button30)
         homeButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        val MeButton = findViewById<Button>(R.id.button31)
+        MeButton.setOnClickListener {
+            val intent = Intent(this, MeActivity::class.java)
             startActivity(intent)
         }
 

@@ -29,6 +29,12 @@ class FavoritesActivity : ComponentActivity() {
             startActivity(intent)
         }
 
+        val Me2Button = findViewById<Button>(R.id.button5)
+        Me2Button.setOnClickListener {
+            val intent = Intent(this, MeActivity::class.java)
+            startActivity(intent)
+        }
+
         val pantryButton = findViewById<Button>(R.id.button6) // "Pantry" button
         pantryButton.setOnClickListener {
             val intent = Intent(this, PantryActivity::class.java)
