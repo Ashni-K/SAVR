@@ -24,7 +24,6 @@ class MainActivity : ComponentActivity() {
             val intent = Intent(this, MeActivity::class.java)
             startActivity(intent)
         }
-
         val favoritesButton = findViewById<Button>(R.id.button3)
         favoritesButton.setOnClickListener {
             val intent = Intent(this, FavoritesActivity::class.java)
