@@ -17,7 +17,6 @@ class MeActivity : ComponentActivity(){
             findViewById<ImageView>(R.id.imageView).setImageURI(it)
         }
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.me)
