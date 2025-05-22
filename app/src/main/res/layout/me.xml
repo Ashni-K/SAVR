@@ -79,13 +79,17 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:fontFamily="sans-serif-medium"
-        android:text="User"
+        android:text=""
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.049">
+        app:layout_constraintVertical_bias="0.025"
+        android:hint="UserName"
+        android:imeOptions="actionDone"
+        android:inputType="textPersonName">
+
     </EditText>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
