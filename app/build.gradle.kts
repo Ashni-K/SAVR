@@ -91,5 +91,6 @@ android {
         implementation("androidx.recyclerview:recyclerview:1.2.0")
         implementation("com.squareup.picasso:picasso:2.71828")
         implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
+        implementation("com.github.yalantis:ucrop:2.2.8")
     }
 }

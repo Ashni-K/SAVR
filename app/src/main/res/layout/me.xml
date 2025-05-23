@@ -71,7 +71,8 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.154" />
+        app:layout_constraintVertical_bias="0.154"
+        />
 
     <EditText
         android:id="@+id/Id"
@@ -89,7 +90,6 @@
         android:hint="UserName"
         android:imeOptions="actionDone"
         android:inputType="textPersonName">
-
     </EditText>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
