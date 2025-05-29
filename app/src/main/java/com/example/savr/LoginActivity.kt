@@ -11,13 +11,13 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
+// LoginActivity class extends AppCompatActivity, making it a screen on the app
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_login) // load layout
 
-        // Find views
+        // Binds EditText and Button views from the XML layouts
         val emailEditText = findViewById<EditText>(R.id.login_email)
         val passwordEditText = findViewById<EditText>(R.id.login_password)
         val loginButton = findViewById<Button>(R.id.login_button)
@@ -27,14 +27,16 @@ class LoginActivity : AppCompatActivity() {
             val email = emailEditText.text.toString()
             val password = passwordEditText.text.toString()
 
+            // Input validation
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            val loginRequest = LoginRequest(email, password)
+            val loginRequest = LoginRequest(email, password) // sends the request to the API using Retrofit
 
-            RetrofitClient.instance.login(loginRequest).enqueue(object : Callback<LoginResponse> {
+            // HTTP client library for Android that simplifies the process of making network requests
+            RetrofitClient.instance.login(loginRequest).enqueue(object : Callback<LoginResponse> { // enqueue makes it async
                 override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                     if (response.isSuccessful) {
                         val token = response.body()?.token
