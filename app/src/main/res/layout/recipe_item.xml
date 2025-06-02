@@ -122,18 +122,24 @@
                     android:layout_marginTop="8dp"
                     android:textColor="#a03b3c" />
 
-                <Button
-                    android:id="@+id/favoriteLabelFront"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Add to favorites"
-                    android:textSize="12sp"
-                    android:textStyle="italic"
-                    android:textColor="#a03b3c"
-                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
                     android:gravity="end"
-                    android:background="@android:color/transparent"
-                    android:padding="0dp" />
+                    android:layout_marginTop="4dp">
+
+                    <Button
+                        android:id="@+id/favoriteLabelFront"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Add to favorites"
+                        android:textSize="12sp"
+                        android:textStyle="italic"
+                        android:textColor="#a03b3c"
+                        android:background="@android:color/transparent"
+                        android:padding="0dp" />
+                </LinearLayout>
 
 
             </LinearLayout>
@@ -191,20 +197,24 @@
                 android:text="1. Step one\n2. Step two\n3. Step three"
                 android:textColor="#a03b3c" />
 
-            <Button
-                android:id="@+id/favoriteLabelBack"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Add to favorites"
-                android:textSize="12sp"
-                android:textStyle="italic"
-                android:textColor="#a03b3c"
-                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
                 android:gravity="end"
-                android:background="@android:color/transparent"
-                android:padding="0dp" />
+                android:layout_marginTop="4dp">
 
-
+                <Button
+                    android:id="@+id/favoriteLabelBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add to favorites"
+                    android:textSize="12sp"
+                    android:textStyle="italic"
+                    android:textColor="#a03b3c"
+                    android:background="@android:color/transparent"
+                    android:padding="0dp" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
