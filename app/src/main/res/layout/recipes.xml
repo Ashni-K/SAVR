@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#5d0703">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recipe Recommendations"
+        android:textColor="#fff8e7"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <HorizontalScrollView
+        android:id="@+id/filterScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <Button
+                android:id="@+id/checkBox3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Filters"
+                android:backgroundTint="#fff8e7"
+                android:textColor="#5d0703"
+                android:drawableStart="@android:drawable/ic_menu_sort_by_size"
+                android:drawablePadding="4dp" />
+
+            <TextView
+                android:id="@+id/activeFiltersText"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="No active filters"
+                android:textColor="#fff8e7"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <FrameLayout
+        android:id="@+id/contentFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/filterScrollView"
+        app:layout_constraintBottom_toTopOf="@+id/navigationLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewRecipes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="8dp"
+            android:clipToPadding="false" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/noRecipesText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="16dp"
+            android:textColor="#fff8e7"
+            android:text="No ingredients selected. Add ingredients in your pantry to get recipe recommendations."
+            android:textSize="16sp"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/navigationLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingVertical="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/button30"
+            android:layout_width="74dp"
+            android:layout_height="51dp"
+            android:layout_marginHorizontal="4dp"
+            android:backgroundTint="#fff8e7"
+            android:textColor="#5d0703"
+            android:text="Home" />
+
+        <Button
+            android:id="@+id/button33"
+            android:layout_width="98dp"
+            android:layout_height="51dp"
+            android:layout_marginHorizontal="4dp"
+            android:backgroundTint="#fff8e7"
+            android:textColor="#5d0703"
+            android:text="Pantry" />
+
+        <Button
+            android:id="@+id/button32"
+            android:layout_width="98dp"
+            android:layout_height="51dp"
+            android:layout_marginHorizontal="4dp"
+            android:backgroundTint="#fff8e7"
+            android:textColor="#5d0703"
+            android:text="Favorites" />
+
+        <Button
+            android:id="@+id/button31"
+            android:layout_width="74dp"
+            android:layout_height="51dp"
+            android:layout_marginHorizontal="4dp"
+            android:backgroundTint="#fff8e7"
+            android:textColor="#5d0703"
+            android:text="Me" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

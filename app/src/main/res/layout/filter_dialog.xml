@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#5d0703">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:text="Filter Recipes"
+            android:textColor="#fff8e7"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <!-- Prep Time Filter -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Maximum Preparation Time (min)"
+            android:textColor="#fff8e7"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp" />
+
+        <SeekBar
+            android:id="@+id/prepTimeSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="60"
+            android:progress="30"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/prepTimeLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="30 min"
+            android:textColor="#fff8e7"
+            android:gravity="center" />
+
+        <!-- Cook Time Filter -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Maximum Cooking Time (min)"
+            android:textColor="#fff8e7"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <SeekBar
+            android:id="@+id/cookTimeSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="120"
+            android:progress="60"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/cookTimeLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="60 min"
+            android:textColor="#fff8e7"
+            android:gravity="center" />
+
+        <!-- Difficulty Level Filter -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Difficulty Level"
+            android:textColor="#fff8e7"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <RadioGroup
+            android:id="@+id/difficultyRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/easyRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff8e7"
+                android:text="Easy" />
+
+            <RadioButton
+                android:id="@+id/mediumRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff8e7"
+                android:text="Medium" />
+
+            <RadioButton
+                android:id="@+id/hardRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff8e7"
+                android:text="Hard" />
+
+            <RadioButton
+                android:id="@+id/anyDifficultyRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff8e7"
+                android:text="Any"
+                android:checked="true" />
+        </RadioGroup>
+
+        <!-- Cuisine Type Filter -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cuisine Type"
+            android:textStyle="bold"
+            android:textColor="#fff8e7"
+            android:layout_marginTop="16dp" />
+
+        <Spinner
+            android:id="@+id/cuisineSpinner"
+            android:layout_width="match_parent"
+            android:textColor="#fff8e7"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
+
+        <!-- Nutrition Filter -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Maximum Calories"
+            android:textColor="#fff8e7"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <SeekBar
+            android:id="@+id/caloriesSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="1000"
+            android:progress="500"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/caloriesLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="500 calories"
+            android:textColor="#fff8e7"
+            android:gravity="center" />
+
+        <!-- Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+
+            <Button
+                android:id="@+id/resetFiltersButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#fff8e7"
+                android:text="Reset" />
+
+            <Button
+                android:id="@+id/applyFiltersButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#fff8e7"
+                android:text="Apply" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
